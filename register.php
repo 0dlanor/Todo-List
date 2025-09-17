@@ -6,6 +6,7 @@ require 'db/connect.php';
 $message = '';
 $redirect = false;
 
+// Envio do formulário
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
@@ -91,8 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-
-<?php echo "{$redirect}" ?>
 
 <h2>Cadastro de Usuário</h2>
 
