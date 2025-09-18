@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 50px;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+}
+
+.message {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.feedback-msg {
+    color: red;
+    font-size: 0.9em;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}

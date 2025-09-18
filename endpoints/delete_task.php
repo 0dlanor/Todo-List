@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once 'db/connect.php';
+require_once '../db/connect.php';
 
 header('Content-Type: application/json');
 

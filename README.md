@@ -55,6 +55,7 @@ Tabelas:
 - `status` INT DEFAULT 0 (0 = pendente, 1 = em andamento, 2 = concluída)  
 - `due_date` DATE NULL  
 - `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+- `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 ---
 

@@ -197,14 +197,6 @@ async function checkAvailability() {
             emailInput.style.borderColor = '';
         }
 
-        usernameMsg.textContent = data.username === 'existente' ? 'Nome de usuário já está em uso.' 
-                            : data.username === 'disponivel' ? 'Nome de usuário disponível.' 
-                            : '';
-
-        emailMsg.textContent = data.email === 'existente' ? 'Email já está em uso.' 
-                            : data.email === 'disponivel' ? 'Email disponível.' 
-                            : '';
-
     } catch (error) {
         console.error('Erro na verificação:', error);
     }
