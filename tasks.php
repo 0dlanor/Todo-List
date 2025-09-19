@@ -42,10 +42,20 @@ if (!isset($_SESSION['user_id'])) {
         <div class="modal-content">
             <h3>Adicionar Tarefa</h3>
             <form id="add-task-form">
-                <input type="text" name="title" placeholder="Título da tarefa" required>
-                <input type="date" name="due_date" placeholder="Data de conclusão (opcional)">
-                <button type="submit">Adicionar</button>
-                <button type="button" id="cancel-btn">Cancelar</button>
+
+                <div class="input-box">
+                    <input type="text" name="title" placeholder="Título da tarefa" required>
+                </div>
+
+                <div class="input-box">
+                    <input type="text" name="title" placeholder="Título da tarefa" required>
+                </div>
+                
+                <div class="buttons-container">
+                    <button type="submit">Adicionar</button>
+                    <button type="button" id="cancel-btn">Cancelar</button>
+                </div>
+
             </form>
         </div>
     </div>
@@ -131,17 +141,9 @@ if (!isset($_SESSION['user_id'])) {
 
                     switch (task.status) {
 
-                        case "0":
-                            statusText = "Pendente"
-                            break;
-
-                        case "1":
-                            statusText = "Em andamento"
-                            break;
-
-                        case "2":
-                            statusText = "Concluída"
-                            break;
+                        case "0": statusText = "Pendente"; break;
+                        case "1": statusText = "Em andamento"; break;
+                        case "2": statusText = "Concluída"; break;
                     }
 
                     //Criação da div da task
