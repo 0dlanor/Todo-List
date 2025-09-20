@@ -16,13 +16,15 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title']);
     $due_date = !empty($_POST['due_date']) ? $_POST['due_date'] : null;
+    $status = $_POST['status'];
     $user_id = $_SESSION['user_id'];
 
     try {
-        $stmt = $pdo->prepare("INSERT INTO tasks (user_id, title, due_date) VALUES (:user_id, :title, :due_date)");
+        $stmt = $pdo->prepare("INSERT INTO tasks (user_id, title, status, due_date) VALUES (:user_id, :title, :status, :due_date)");
         $stmt->execute([
             'user_id' => $user_id,
             'title' => $title,
+            'status' => $status,
             'due_date' => $due_date
         ]);
 
@@ -33,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'task' => [
                 'task_id' => $task_id,
                 'title' => $title,
+                'status' => $status,
                 'due_date' => $due_date,
-                'status' => 'pending'
             ]
         ]);
     } catch (PDOException $e) {

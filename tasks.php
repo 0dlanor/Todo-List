@@ -40,20 +40,33 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Modal -->
     <div class="modal" id="task-modal">
         <div class="modal-content">
+
             <h3>Adicionar Tarefa</h3>
+
             <form id="add-task-form">
 
                 <div class="input-box">
-                    <input type="text" name="title" placeholder="Título da tarefa" required>
+                    <label class="input-label" for="title">Título da tarefa</label>
+                    <input class="input-field" type="text" name="title" required>
                 </div>
 
                 <div class="input-box">
-                    <input type="text" name="title" placeholder="Título da tarefa" required>
+                    <label class="input-label" for="date">Prazo de conclusão</label>
+                    <input class="input-field" type="date" name="due_date" placeholder="Prazo">
                 </div>
-                
+
+                <div class="input-box">
+                    <label for="status" class="input-label">Status da tarefa</label>
+                    <select id="status" name="status" class="input-field">
+                        <option value="0">Pendente</option>
+                        <option value="1">Em andamento</option>
+                        <option value="2">Concluído</option>
+                    </select>
+                </div>
+
                 <div class="buttons-container">
-                    <button type="submit">Adicionar</button>
-                    <button type="button" id="cancel-btn">Cancelar</button>
+                    <button class="button" type="submit" id="add-btn">Adicionar</button>
+                    <button class="button" type="button" id="cancel-btn">Cancelar</button>
                 </div>
 
             </form>
@@ -61,7 +74,6 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 
     <script>
-
         // ----- Gerenciar modal para adicionar tarefas -----
 
         const addTaskForm = document.getElementById('add-task-form');
@@ -108,7 +120,13 @@ if (!isset($_SESSION['user_id'])) {
 
                 const result = await response.json()
 
-                result.success ? console.log("Saindo da conta") : console.error(result.message)
+                if (result.success) {
+                    console.log("Saindo da conta")
+                    window.location = "index.php"
+
+                } else {
+                    console.error(result.message)
+                }
 
             } catch (error) {
                 console.error("Erro na requisição: ", error)
@@ -141,9 +159,15 @@ if (!isset($_SESSION['user_id'])) {
 
                     switch (task.status) {
 
-                        case "0": statusText = "Pendente"; break;
-                        case "1": statusText = "Em andamento"; break;
-                        case "2": statusText = "Concluída"; break;
+                        case "0":
+                            statusText = "Pendente";
+                            break;
+                        case "1":
+                            statusText = "Em andamento";
+                            break;
+                        case "2":
+                            statusText = "Concluída";
+                            break;
                     }
 
                     //Criação da div da task
